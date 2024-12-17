@@ -9,7 +9,7 @@ const TripSchema = new mongoose.Schema({
         {
             time: { type: String, required: true },
             activity: { type: String, required: true },
-            location: { type: String, required: true },
+            location: { type: String },
         },
     ],
 });
