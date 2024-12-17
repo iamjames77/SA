@@ -1,0 +1,17 @@
+{
+    "name": "RouteOptimizer",
+    "version": "1.0.0",
+    "description": "Route optimizer for travel planning application",
+    "main": "index.js",
+    "scripts": {
+      "start": "node index.js"
+    },
+    "dependencies": {
+      "express": "^4.18.2",
+      "axios": "^1.4.0",
+      "dotenv": "^16.0.0",
+      "cors": "^2.8.5"
+    },
+    "author": "Your Name",
+    "license": "MIT"
+}

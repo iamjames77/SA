@@ -1,0 +1,57 @@
+services:
+  mongodb:
+    image: mongo:latest
+    container_name: mongodb
+    ports:
+      - "27017:27017"
+    volumes:
+      - mongodb_data:/data/db
+    networks:
+      - trip-network
+
+  apigateway:
+    build: ./APIGateway
+    container_name: apigateway
+    ports:
+      - "3000:3000"
+    depends_on:
+      - tripservice
+      - routeoptimizer
+      - notification
+    networks:
+      - trip-network
+
+  tripservice:
+    build: ./TripService
+    container_name: tripservice
+    ports:
+      - "3001:3001"
+    environment:
+      - MONGO_URI=mongodb://mongodb:27017/trip-planner
+    depends_on:
+      - mongodb
+    networks:
+      - trip-network
+
+  routeoptimizer:
+    build: ./RouteOptimizer
+    container_name: routeoptimizer
+    ports:
+      - "3002:3002"
+    networks:
+      - trip-network
+
+  notification:
+    build: ./Notification
+    container_name: notification
+    ports:
+      - "3003:3003"
+    networks:
+      - trip-network
+
+volumes:
+  mongodb_data:
+
+networks:
+  trip-network:
+    driver: bridge

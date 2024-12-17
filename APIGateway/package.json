@@ -1,0 +1,16 @@
+{
+    "name": "APIGateway",
+    "version": "1.0.0",
+    "description": "API Gateway for travel planning application",
+    "main": "index.js",
+    "scripts": {
+      "start": "node index.js"
+    },
+    "dependencies": {
+        "express": "^4.18.2",
+        "axios": "^1.4.0",
+        "dotenv": "^16.0.0"
+    },
+    "author": "MSH",
+    "license": "MIT"
+  }
